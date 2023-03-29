@@ -2,22 +2,18 @@ import os
 
 
 def dobavlenie(folder_path, file_name):
-    #создание нового файла
     open(os.path.join(folder_path, file_name), 'w').close()
 
 
 def prosmotr(file_path):
-    #просмотр файла
     with open(file_path, 'r') as f:
         print(f.read())
 
 
 def udalenie(file_path):
-    # удаление файла
     os.remove(file_path)
 
 def udalit_duplikati(path):
-    # удалениt повторяющихся файлов
     file_hashes = {}
     for root, dirs, files in os.walk(path):
         for file in files:
@@ -32,25 +28,20 @@ def udalit_duplikati(path):
 
 
 def scanirovanie(folder_path):
-    # сканирование папки
     files = os.listdir(folder_path)
 
-    # Сортируем файлы
     sortirovka = sorted(files)
 
     return sortirovka
 
 
 def redaktirovanie(folder_path, file_name):
-    # редактирование файла
     file_path = os.path.join(folder_path, file_name)
 
     with open(file_path, 'w') as f:
-        #вывод содержимого, для удобства редактирования
         content = f.read()
         print(content)
 
-        #редактирование файла
         new_content = input(f'Ввдите новое содержимое {file_name}: ')
         f.write(new_content)
 
@@ -63,7 +54,6 @@ def menu():
     print('[6]\t удалить повторяющиеся файлы в папке')
     print('[7]\t выйти')
 
-    # Получение выбора от юзера
     key = int(input('Ваш выбор: '))
 
     if key == 1:
@@ -98,4 +88,3 @@ def menu():
 
 path = input('Введите путь к папке: ')
 menu()
-
